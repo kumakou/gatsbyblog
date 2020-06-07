@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby test blog`,
+    title: `Gatsby`,
     author: {
       name: `クマ`,
       //summary: `who lives and works in San Francisco building useful things.`,
@@ -81,3 +81,7 @@ module.exports = {
     // `gatsby-plugin-offline`,
   ],
 }
+
+// module.exports = {
+//   pathPrefix: "/gatsbyblog",
+// }
