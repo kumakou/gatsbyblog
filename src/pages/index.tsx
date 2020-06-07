@@ -37,31 +37,39 @@ const BlogIndex = ({ data, location }: PageProps<Data>) => {
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
-      <Bio />
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
         return (
-          <article key={node.fields.slug}>
-            <header>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                }}
-              >
-                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
+          <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
+            <article key={node.fields.slug}
+              style={{
+                border: 'solid 1px black',
+                borderRadius: '5px',
+                marginBottom: '4px',
+                paddingLeft: '20px',
+              }}
+            >
+              <header>
+                <h3
+                  style={{
+                    marginTop: '20px',
+                    marginBottom: rhythm(1.5),
+                  }}
+                >
                   {title}
-                </Link>
-              </h3>
-              <small>{node.frontmatter.date}</small>
-            </header>
-            <section>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.description || node.excerpt,
-                }}
-              />
-            </section>
-          </article>
+                </h3>
+                <small>{node.frontmatter.date}</small>
+              </header>
+              <section>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: node.frontmatter.description || node.excerpt,
+                  }}
+                />
+              </section>
+            </article>
+          </Link>
+
         )
       })}
     </Layout>
