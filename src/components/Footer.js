@@ -1,11 +1,15 @@
 import React from 'react'
 import Bio from '../components/bio'
+import { rhythm } from "../utils/typography"
 
 const Footer = () => {
     return (
-        <footer style={{
-            marginTop: '100px',
-            paddingTop: "100px",
+        <footer css={{
+            backgroundColor: '#ddbc89',
+            marginTop: rhythm(4),
+            paddingTop: rhythm(4),
+            paddingLeft: rhythm(1),
+            paddingBottom: rhythm(2),
             borderTop: 'solid 1px rgb(223,223,223)'
         }}>
             <Bio />
