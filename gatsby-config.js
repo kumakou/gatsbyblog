@@ -11,6 +11,7 @@ module.exports = {
       twitter: `kumakou1999`,
     },
   },
+  pathPrefix: '/blog',
   plugins: [
     'gatsby-plugin-emotion',
     {
