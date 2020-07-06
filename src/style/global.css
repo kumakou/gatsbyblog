@@ -1,0 +1,18 @@
+body{
+  background-color: #f9f3cf;
+}
+
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: #aa512f;
+}
+
+/* ::selection
+{
+    
+} */
+
+img{
+  margin: 0;
+}

@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby test blog`,
+    title: `KumaMemo`,
     author: {
       name: `クマ`,
       //summary: `who lives and works in San Francisco building useful things.`,
@@ -8,10 +8,12 @@ module.exports = {
     description: `A starter blog demonstrating what Gatsby can do.`,
     siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `kumakou1999`,
     },
   },
+  pathPrefix: '/blog',
   plugins: [
+    'gatsby-plugin-emotion',
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -81,3 +83,4 @@ module.exports = {
     // `gatsby-plugin-offline`,
   ],
 }
+

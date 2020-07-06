@@ -1,17 +1,36 @@
 import Typography from "typography"
-import Wordpress2016 from "typography-theme-wordpress-2016"
+// import Wordpress2016 from "typography-theme-wordpress-2016"
 
-Wordpress2016.overrideThemeStyles = () => {
-  return {
-    "a.gatsby-resp-image-link": {
-      boxShadow: `none`,
+// Wordpress2016.overrideThemeStyles = () => {
+//   return {
+//     "a.gatsby-resp-image-link": {
+//       boxShadow: `none`,
+//     },
+//   }
+// }
+
+// delete Wordpress2016.googleFonts
+
+const typography = new Typography({
+  headerFontFamily: ['Nunito', 'Kosugi'],
+  bodyFontFamily: ['Nunito', 'Kosugi'],
+  baseFontSize: "16px",
+  baseLineheight: 1.666,
+  googleFonts: [
+    {
+      name: 'Kosugi',
+      styles: []
     },
+    {
+      name: 'Nunito',
+      styles: ['600']
+    }
+  ],
+  'h1, h2, h3': {
+    fontFamily: ['Nunito', 'M + PLUS + Rounded + 1c']
   }
-}
-
-delete Wordpress2016.googleFonts
-
-const typography = new Typography(Wordpress2016)
+},
+)
 
 // Hot reload typography in development.
 if (process.env.NODE_ENV !== `production`) {

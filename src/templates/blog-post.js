@@ -5,11 +5,12 @@ import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
+import { css } from '@emotion/core'
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata.title
-  const { previous, next } = pageContext
+  const { previous, next, latest } = pageContext
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -17,10 +18,17 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
-      <article>
+      <article
+        css={{
+          padding: `${rhythm(1)} ${rhythm(1)} ${rhythm(1)}`,
+          backgroundColor: '#ede7cf',
+          opacity: 0.8,
+          marginBottom: rhythm(1),
+        }}
+      >
         <header>
           <h1
-            style={{
+            css={{
               marginTop: rhythm(1),
               marginBottom: 0,
             }}
@@ -28,7 +36,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             {post.frontmatter.title}
           </h1>
           <p
-            style={{
+            css={{
               ...scale(-1 / 5),
               display: `block`,
               marginBottom: rhythm(1),
@@ -39,21 +47,23 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         </header>
         <section dangerouslySetInnerHTML={{ __html: post.html }} />
         <hr
-          style={{
+          css={{
             marginBottom: rhythm(1),
           }}
         />
 
       </article>
 
-      <nav>
+      <nav
+        css={{
+          padding: `0 ${rhythm(1)} 0`,
+        }}>
         <ul
-          style={{
+          css={{
             display: `flex`,
             flexWrap: `wrap`,
             justifyContent: `space-between`,
             listStyle: `none`,
-            padding: 0,
           }}
         >
           <li>
@@ -72,6 +82,15 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           </li>
         </ul>
       </nav>
+      <div
+        css={{
+          padding: `0 ${rhythm(1)} 0`,
+        }}>
+        {latest && (
+          <Link to={latest.fields.slug} rel="prev">
+            {latest.frontmatter.title}
+          </Link>)}
+      </div>
     </Layout>
   )
 }
@@ -82,7 +101,7 @@ export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
     site {
       siteMetadata {
-        title
+        title,
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
